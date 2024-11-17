@@ -7,7 +7,14 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: {
+          DEFAULT: "#e5e7eb",
+          dark: "#111827",
+        },
+      },
+    },
   },
   plugins: [],
   darkMode: "class",
