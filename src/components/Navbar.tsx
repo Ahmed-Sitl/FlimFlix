@@ -13,7 +13,7 @@ const Navbar = () => {
         <div className="container mx-auto p-1 flex justify-between items-center">
           <div className="flex gap-14">
             <MenuNavbar />
-            <Logo />
+            <Logo fontSize={60} />
             <div className="hidden md:flex">
               <ul className="flex gap-5 items-center justify-center text-lg font-bold">
                 <li className="flex justify-center items-center gap-2">
@@ -42,7 +42,7 @@ const Navbar = () => {
                 EN
               </option>
               <option value="ar" className="dark:bg-primary-dark">
-                AE
+                AR
               </option>
             </select>
             <DarkMode />

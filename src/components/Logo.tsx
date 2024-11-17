@@ -1,16 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const Logo = () => {
+interface Props {
+  fontSize?: number;
+}
+
+const Logo = ({ fontSize }: Props) => {
   return (
     <Link href="/">
-      <figure className="rounded-full flex justify-center items-center w-16">
+      <figure>
         <Image
           className="rounded-full"
           src="/filmflix.webp"
-          width={64}
-          height={64}
-          alt="Description of the image"
+          width={fontSize}
+          height={fontSize}
+          alt="Film Flix Logo"
         />
       </figure>
     </Link>
