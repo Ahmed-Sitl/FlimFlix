@@ -4,8 +4,8 @@ import Logo from "@/components/Logo";
 const Footer = () => {
   return (
     <footer className="bg-primary dark:bg-primary-dark dark:text-white py-20">
-      <div className="container mx-auto grid gap-20 grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
-        <div className="flex items-center flex-col">
+      <div className="container mx-auto flex flex-col justify-between items-center gap-3 md:flex-row md:items-start">
+        <div>
           <Logo fontSize={150} />
         </div>
         <div>

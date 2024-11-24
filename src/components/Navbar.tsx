@@ -26,7 +26,7 @@ const Navbar = () => {
                   TV Shows <MdKeyboardArrowDown fontSize={25} />
                 </li>
                 <li className="flex justify-center items-center gap-2">
-                  Actors <MdKeyboardArrowDown fontSize={25} />{" "}
+                  Actors
                 </li>
               </ul>
             </div>
