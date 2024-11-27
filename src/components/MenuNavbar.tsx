@@ -15,8 +15,8 @@ const MenuNavbar = () => {
         <FiMenu fontSize={40} className="cursor-pointer" onClick={handleMenu} />
       </div>
       {isOpen && (
-        <div className="absolute top-0 left-0 w-full h-full bg-black/50 dark:text-white">
-          <div className="w-80 h-full bg-primary-dark ">
+        <div className="z-10 absolute top-0 left-0 w-full h-full bg-black/50 dark:text-white">
+          <div className="w-80 h-full bg-primary-dark">
             <div className="flex justify-between items-center p-5">
               <Logo fontSize={80} />
               <IoClose
