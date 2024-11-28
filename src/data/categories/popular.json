@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1",
+    "name": "Streaming",
+    "value": "/movie/popular?with_watch_monetization_types=flatrate"
+  },
+  {
+    "id": "2",
+    "name": "On Tv",
+    "value": "/tv/popular"
+  },
+  {
+    "id": "3",
+    "name": "For Rent",
+    "value": "/movie/popular?with_watch_monetization_types=rental"
+  },
+  {
+    "id": "3",
+    "name": "In Theaters",
+    "value": "/movie/now_playing"
+  }
+]

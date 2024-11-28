@@ -1,19 +1,31 @@
+"use client";
 import MediaSectionHead from "@/components/MediaSectionHead";
 import MediaSectionBody from "@/components/MediaSectionBody";
-// import fetchData from "@/services/FetchData";
-import { fetchData } from "@/util/FetchData";
-import { fetchImage } from "@/util/FetchImages";
+import { useState } from "react";
 
-interface MediaSectionProps {
-  title: string;
-  liElements: string[];
+interface Trending {
+  id: string;
+  name: string;
+  value: string;
 }
 
-const MediaSection = async ({ title, liElements }: MediaSectionProps) => {
+interface Props {
+  title: string;
+  categories: Trending[];
+}
+
+const MediaSection = ({ title, categories }: Props) => {
+  const [Category, setCategory] = useState(categories[0]);
+
   return (
     <div className="flex flex-col gap-10">
-      <MediaSectionHead title={title} liElements={liElements} />
-      <MediaSectionBody />
+      <MediaSectionHead
+        title={title}
+        categories={categories}
+        Category={Category}
+        setCategory={setCategory}
+      />
+      <MediaSectionBody Category={Category} />
     </div>
   );
 };

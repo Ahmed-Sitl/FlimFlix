@@ -1,19 +1,37 @@
-interface MediaSectionProps {
-  title: string;
-  liElements: string[];
+interface Trending {
+  id: string;
+  name: string;
+  value: string;
 }
 
-const MediaSectionHead = ({ title, liElements }: MediaSectionProps) => {
+interface Props {
+  title: string;
+  categories: Trending[];
+  Category: string;
+  setCategory: (Category: string) => void;
+}
+
+const MediaSectionHead = ({
+  title,
+  categories,
+  Category,
+  setCategory,
+}: Props) => {
   return (
     <div className="flex gap-5">
       <div className="font-bold text-2xl">{title}</div>
       <ul className="flex gap-5 justify-center items-center rounded-full bg-slate-300 text-black">
-        {liElements.map((li, index) => (
+        {categories.map((li, index) => (
           <li
+            onClick={() => setCategory(li.name)}
             key={index}
-            className="cursor-pointer p-2 border-[1px] rounded-full bg-primary-dark text-white"
+            className={`cursor-pointer p-2 rounded-full ${
+              li.name === Category
+                ? "bg-primary-dark text-white"
+                : "bg-transparent text-black" // Added a fallback class for non-selected items
+            }`}
           >
-            {li}
+            {li.name}
           </li>
         ))}
       </ul>
