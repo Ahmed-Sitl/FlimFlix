@@ -2,7 +2,7 @@ import React from "react";
 import Logo from "./Logo";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { FaSignInAlt, FaUser } from "react-icons/fa";
-import SearchProps from "./SearchProps";
+import SearchProps from "./SearchPopup";
 import DarkMode from "./DarkMode";
 import MenuNavbar from "./MenuNavbar";
 
