@@ -8,7 +8,7 @@ interface Props {
   title: string;
   categories: Trending[];
   Category: string;
-  setCategory: (Category: string) => void;
+  setCategory: (Category: Trending) => void;
 }
 
 const MediaSectionHead = ({
@@ -23,7 +23,7 @@ const MediaSectionHead = ({
       <ul className="flex gap-5 justify-center items-center rounded-full bg-slate-300 text-black">
         {categories.map((li, index) => (
           <li
-            onClick={() => setCategory(li.name)}
+            onClick={() => setCategory(li)}
             key={index}
             className={`cursor-pointer p-2 rounded-full ${
               li.name === Category

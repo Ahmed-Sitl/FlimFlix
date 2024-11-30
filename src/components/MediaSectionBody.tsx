@@ -13,6 +13,7 @@ interface Movie {
   poster_path: string;
   title: string;
   vote_average: number;
+  name: string;
 }
 
 interface FetchDataResponse {
@@ -20,18 +21,16 @@ interface FetchDataResponse {
 }
 
 interface Props {
-  Category: string;
+  category: string;
 }
 
-const MediaSectionBody = ({ Category }: Props) => {
-  // Explicitly define the type of testData
+const MediaSectionBody = ({ category }: Props) => {
   const [testData, setTestData] = useState<FetchDataResponse | null>(null);
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     const getData = async () => {
       try {
-        const data = await fetchData(getTrendingEndpoint("day"));
+        const data = await fetchData(getTrendingEndpoint(category));
 
         setTestData(data as FetchDataResponse); // Cast data to the expected type
       } catch (error) {
@@ -42,7 +41,7 @@ const MediaSectionBody = ({ Category }: Props) => {
     };
 
     getData();
-  }, []);
+  }, [category]);
 
   if (loading) {
     return <p>Loading...</p>; // Render a loading message or spinner while fetching data
@@ -62,7 +61,7 @@ const MediaSectionBody = ({ Category }: Props) => {
               height={500}
               className="rounded-2xl"
               src={fetchImage(movie.poster_path)}
-              alt={movie.title}
+              alt={movie.title || movie.name}
             />
             <div className="absolute bottom-14 left-3">
               <CircularProgress value={Math.floor(movie.vote_average * 10)} />

@@ -15,17 +15,16 @@ interface Props {
 }
 
 const MediaSection = ({ title, categories }: Props) => {
-  const [Category, setCategory] = useState(categories[0]);
-
+  const [Category, setCategory] = useState<Trending>(categories?.[0]);
   return (
     <div className="flex flex-col gap-10">
       <MediaSectionHead
         title={title}
         categories={categories}
-        Category={Category}
+        Category={Category.name}
         setCategory={setCategory}
       />
-      <MediaSectionBody Category={Category} />
+      <MediaSectionBody category={Category.name} />
     </div>
   );
 };

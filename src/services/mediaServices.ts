@@ -1,40 +1,23 @@
 // returns api endpoint for fetching trending media based on the type = {today or this_week}
 export function getTrendingEndpoint(category: string) {
-  return `/trending/movie/${category}`;
-}
-
-// returns api endpoint for fetching popular media, based on the category include: streaming, on_tv, for_rent ..etc
-export function getPopularEndpoint(category: string) {
   switch (category) {
-    case "streaming":
+    case "Today":
+      return `/trending/movie/day`;
+    case "This week":
+      return `/trending/movie/week`;
+    case "Streaming":
       return "/movie/popular?with_watch_monetization_types=flatrate";
-    case "on_tv":
+    case "On Tv":
       return "/tv/popular";
-    case "for_rent":
+    case "For Rent":
       return "/movie/popular?with_watch_monetization_types=rental";
-    case "in_theaters":
+    case "In Theaters":
       return "/movie/now_playing";
+    case "Movies":
+      return `/discover/movie?with_watch_monetization_types=free`;
+    case "TV":
+      return `/discover/tv?with_watch_monetization_types=free`;
     default:
       return "/movie/popular";
   }
-}
-
-// returns api endpoint for fetching media that is free to watch, based on the category.{movie, tv}
-export function getFreeToWatchEndpoint(category: string) {
-  return `/discover/${category}?with_watch_monetization_types=free`;
-}
-
-// returns a link to the item's page, based on whether it's a movie or a TV show.
-export function getMediaLink(item: any) {
-  return item.name ? `/tv/${item.id}` : `/movie/${item.id}`;
-}
-
-// returns the title of the media item.
-export function getMediaTitle(item: any) {
-  return item.title || item.name;
-}
-
-// release date of media {movie or tv}
-export function getMediaReleaseDate(item: any) {
-  return item.release_date || item.first_air_date;
 }

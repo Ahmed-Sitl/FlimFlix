@@ -9,8 +9,8 @@ const HeroSection = () => {
         <Image
           src={headerImage}
           alt="Hero Image"
-          layout="fill"
-          objectFit="cover"
+          fill
+          style={{ objectFit: "cover" }}
           quality={100}
           priority
         />

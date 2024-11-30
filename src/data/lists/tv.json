@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "Popular"
+  },
+  {
+    "id": 2,
+    "name": "Airing Today"
+  },
+  {
+    "id": 3,
+    "name": "On The Air"
+  },
+  {
+    "id": 4,
+    "name": "Top Rated"
+  }
+]
