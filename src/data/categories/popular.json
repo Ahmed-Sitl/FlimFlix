@@ -15,7 +15,7 @@
     "value": "/movie/popular?with_watch_monetization_types=rental"
   },
   {
-    "id": "3",
+    "id": "4",
     "name": "In Theaters",
     "value": "/movie/now_playing"
   }
