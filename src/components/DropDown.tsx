@@ -1,4 +1,5 @@
-import Link from "next/link";
+"use client";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 interface Props {
@@ -8,16 +9,34 @@ interface Props {
 interface DropDonwProps {
   id: number;
   name: string;
+  value: string;
+  route: string;
 }
 
 const DropDown = ({ genres }: Props) => {
+  const router = useRouter();
+
+  const handleNavigation = (li: DropDonwProps) => {
+    sessionStorage.setItem(
+      "genreData",
+      JSON.stringify({ id: li.id, name: li.name, route: li.route })
+    );
+
+    // Navigate to the movie page
+    router.push(li.value);
+  };
+
   return (
-    <div className="bg-[#3e362e] w-60 text-sm rounded-lg">
+    <div className="bg-primary dark:bg-[#3e362e] w-60 text-sm rounded-lg">
       <ul className="grid grid-cols-2 p-3">
         {genres.map((li: DropDonwProps) => (
-          <Link key={li.id} href="/">
-            <li className="p-2 hover:text-blue-400">{li.name}</li>
-          </Link>
+          <li
+            key={li.id}
+            className="p-2 hover:text-blue-400 cursor-pointer"
+            onClick={() => handleNavigation(li)}
+          >
+            {li.name}
+          </li>
         ))}
       </ul>
     </div>

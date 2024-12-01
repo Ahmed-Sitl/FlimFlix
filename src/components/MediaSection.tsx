@@ -24,7 +24,7 @@ const MediaSection = ({ title, categories }: Props) => {
         Category={Category.name}
         setCategory={setCategory}
       />
-      <MediaSectionBody category={Category.name} />
+      <MediaSectionBody category={Category.value} />
     </div>
   );
 };

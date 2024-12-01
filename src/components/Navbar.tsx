@@ -6,11 +6,11 @@ import SearchProps from "@/components/SearchPopup";
 import DarkMode from "@/components/DarkMode";
 import MenuNavbar from "@/components/MenuNavbar";
 import DropDonw from "@/components/DropDown";
-import { fetchData } from "@/util/FetchData";
 import movies from "@/data/lists/movies.json";
+import tv from "@/data/lists/tv.json";
+import people from "@/data/lists/people.json";
 
 const Navbar = async () => {
-  const genres = await fetchData("/genre/movie/list");
   return (
     <nav className="bg-primary dark:bg-primary-dark dark:text-white">
       <div className="container mx-auto p-1 flex justify-between items-center">
@@ -21,19 +21,6 @@ const Navbar = async () => {
             <ul className="flex gap-5 items-center justify-center text-lg font-bold">
               <li className="relative flex justify-center items-center group">
                 <div className="flex justify-center items-center gap-2 cursor-pointer">
-                  Genres
-                  <MdKeyboardArrowDown
-                    className="transition-transform duration-300 group-hover:rotate-180"
-                    fontSize={25}
-                  />
-                </div>
-                <span className="absolute top-7 z-20 hidden group-hover:flex flex-col">
-                  <DropDonw genres={genres.genres} />
-                </span>
-              </li>
-
-              <li className="relative flex justify-center items-center group">
-                <div className="flex justify-center items-center gap-2 cursor-pointer">
                   Movies
                   <MdKeyboardArrowDown
                     className="transition-transform duration-300 group-hover:rotate-180"
@@ -42,6 +29,32 @@ const Navbar = async () => {
                 </div>
                 <span className="absolute top-7 z-20 hidden group-hover:flex flex-col">
                   <DropDonw genres={movies} />
+                </span>
+              </li>
+
+              <li className="relative flex justify-center items-center group">
+                <div className="flex justify-center items-center gap-2 cursor-pointer">
+                  TV Shows
+                  <MdKeyboardArrowDown
+                    className="transition-transform duration-300 group-hover:rotate-180"
+                    fontSize={25}
+                  />
+                </div>
+                <span className="absolute top-7 z-20 hidden group-hover:flex flex-col">
+                  <DropDonw genres={tv} />
+                </span>
+              </li>
+
+              <li className="relative flex justify-center items-center group">
+                <div className="flex justify-center items-center gap-2 cursor-pointer">
+                  People
+                  <MdKeyboardArrowDown
+                    className="transition-transform duration-300 group-hover:rotate-180"
+                    fontSize={25}
+                  />
+                </div>
+                <span className="absolute top-7 z-20 hidden group-hover:flex flex-col">
+                  <DropDonw genres={people} />
                 </span>
               </li>
             </ul>

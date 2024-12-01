@@ -1,18 +1,22 @@
 [
   {
     "id": 1,
-    "name": "Popular"
+    "name": "Popular",
+    "value": "/tv/popular"
   },
   {
     "id": 2,
-    "name": "Airing Today"
+    "name": "Airing Today",
+    "value": "/tv/airing_today"
   },
   {
     "id": 3,
-    "name": "On The Air"
+    "name": "On The Air",
+    "value": "/tv/on_the_air"
   },
   {
     "id": 4,
-    "name": "Top Rated"
+    "name": "Top Rated",
+    "value": "/tv/top_rated"
   }
 ]

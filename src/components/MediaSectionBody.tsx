@@ -5,7 +5,7 @@ import { fetchImage } from "@/util/FetchImages";
 import CircularProgress from "@/components/CircularProgress";
 import Image from "next/image";
 import Link from "next/link";
-import { getTrendingEndpoint } from "@/services/mediaServices";
+// import { getTrendingEndpoint } from "@/services/mediaServices";
 
 // Define the expected structure of the data
 interface Movie {
@@ -30,7 +30,7 @@ const MediaSectionBody = ({ category }: Props) => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const data = await fetchData(getTrendingEndpoint(category));
+        const data = await fetchData(category);
 
         setTestData(data as FetchDataResponse); // Cast data to the expected type
       } catch (error) {

@@ -18,7 +18,7 @@ const MediaSectionHead = ({
   setCategory,
 }: Props) => {
   return (
-    <div className="flex gap-5">
+    <div className="flex gap-5 overflow-x-auto">
       <div className="font-bold text-2xl">{title}</div>
       <ul className="flex gap-5 justify-center items-center rounded-full bg-slate-300 text-black">
         {categories.map((li, index) => (

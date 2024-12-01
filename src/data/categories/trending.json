@@ -2,11 +2,11 @@
   {
     "id": "1",
     "name": "Today",
-    "value": "/day"
+    "value": "/trending/movie/day"
   },
   {
     "id": "2",
     "name": "This week",
-    "value": "/week"
+    "value": "/trending/movie/week"
   }
 ]
