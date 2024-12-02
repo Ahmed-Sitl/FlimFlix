@@ -1,6 +1,6 @@
 "use client";
-import { useRouter } from "next/navigation";
 import React from "react";
+import Link from "next/link";
 
 interface Props {
   genres: DropDonwProps[];
@@ -14,29 +14,15 @@ interface DropDonwProps {
 }
 
 const DropDown = ({ genres }: Props) => {
-  const router = useRouter();
-
-  const handleNavigation = (li: DropDonwProps) => {
-    sessionStorage.setItem(
-      "genreData",
-      JSON.stringify({ id: li.id, name: li.name, route: li.route })
-    );
-
-    // Navigate to the movie page
-    router.push(li.value);
-  };
-
   return (
     <div className="bg-primary dark:bg-[#3e362e] w-60 text-sm rounded-lg">
       <ul className="grid grid-cols-2 p-3">
         {genres.map((li: DropDonwProps) => (
-          <li
-            key={li.id}
-            className="p-2 hover:text-blue-400 cursor-pointer"
-            onClick={() => handleNavigation(li)}
-          >
-            {li.name}
-          </li>
+          <Link key={li.id} href={li.value}>
+            <li className="p-2 hover:text-blue-400 cursor-pointer">
+              {li.name}
+            </li>
+          </Link>
         ))}
       </ul>
     </div>

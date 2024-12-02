@@ -2,25 +2,21 @@
   {
     "id": 1,
     "name": "Popular",
-    "value": "/movie",
-    "route": "/movie/popular"
+    "value": "/movie/popular"
   },
   {
     "id": 2,
     "name": "Top Rated",
-    "value": "/movie",
-    "route": "/movie/top_rated"
+    "value": "/movie/top_rated"
   },
   {
     "id": 3,
     "name": "Upcoming",
-    "value": "/movie",
-    "route": "/movie/upcoming"
+    "value": "/movie/upcoming"
   },
   {
     "id": 4,
     "name": "Now Playing",
-    "value": "/movie",
-    "route": "/movie/now_playing"
+    "value": "/movie/now_playing"
   }
 ]
