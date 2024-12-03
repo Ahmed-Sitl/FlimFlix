@@ -1,5 +1,5 @@
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { FaSignInAlt, FaUser } from "react-icons/fa";
+import { FaSignInAlt } from "react-icons/fa";
 
 import Logo from "@/components/Logo";
 import SearchProps from "@/components/SearchPopup";

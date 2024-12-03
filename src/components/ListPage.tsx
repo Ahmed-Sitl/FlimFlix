@@ -8,7 +8,6 @@ interface Props {
 
 const ListPage = async ({ id, route }: Props) => {
   const data = await fetchData(`/${route}/${id}`);
-  console.log(data);
   const format = (str: string) => {
     return str
       .split("_")

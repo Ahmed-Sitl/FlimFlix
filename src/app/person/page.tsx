@@ -5,7 +5,6 @@ import { fetchImage } from "@/util/FetchImages";
 
 const Page = async () => {
   const data = await fetchData(`/person/popular`);
-  console.log(data);
 
   return (
     <div className="dark:bg-primary-dark dark:text-white">

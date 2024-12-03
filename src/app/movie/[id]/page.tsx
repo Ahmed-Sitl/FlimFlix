@@ -1,10 +1,10 @@
 import ListPage from "@/components/ListPage";
 import SingalMovie from "@/components/SingalMovie";
 interface Props {
-  params: { id: string };
+  id: string;
 }
-const page = async function Page({ params }: Props) {
-  const { id } = await params;
+const page = async function Page({ params }: { params: Promise<Props> }) {
+  const id = (await params).id;
   const list = ["popular", "upcoming", "now_playing", "top_rated"];
 
   return (

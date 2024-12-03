@@ -10,7 +10,6 @@ interface DropDonwProps {
   id: number;
   name: string;
   value: string;
-  route: string;
 }
 
 const DropDown = ({ genres }: Props) => {
