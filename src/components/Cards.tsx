@@ -19,7 +19,7 @@ const Cards = ({ movie, route }: Props) => {
   return (
     <div
       key={movie.id}
-      className="dark:text-white relative max-w-[200px] min-w-[200px] hover:scale-105 transition-transform duration-200"
+      className="relative dark:text-white max-w-[200px] min-w-[200px] hover:scale-105 transition-transform duration-200"
     >
       <Link href={`/${route}/${movie.id}`}>
         <Image
@@ -30,10 +30,10 @@ const Cards = ({ movie, route }: Props) => {
           src={fetchImage(movie.poster_path)}
           alt={movie.title || movie.name || "Movie Poster"}
         />
-        <div className="absolute bottom-8 left-3">
+        <div className="absolute bottom-10 left-3">
           <CircularProgress value={Math.floor(movie.vote_average * 10)} />
         </div>
-        <div className="pt-2 font-bold text-center text-sm text-wrap leading-tight">
+        <div className="mt-2 font-bold text-center text-sm text-wrap leading-tight">
           {movie.title || movie.name}
         </div>
       </Link>
