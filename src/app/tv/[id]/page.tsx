@@ -9,7 +9,13 @@ const page = async function Page({ params }: { params: Promise<Props> }) {
   const list = ["popular", "airing_today", "on_the_air", "top_rated"];
 
   return (
-    <>{list.includes(id) ? <ListPage id={id} route="tv" /> : <SingalMovie />}</>
+    <>
+      {list.includes(id) ? (
+        <ListPage id={id} route="tv" />
+      ) : (
+        <SingalMovie id="" route="" />
+      )}
+    </>
   );
 };
 
