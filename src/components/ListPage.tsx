@@ -18,7 +18,7 @@ const ListPage = async ({ id, route }: Props) => {
 
   return (
     <div className="bg-gray-100 dark:bg-primary-dark">
-      <div className="container mx-auto">
+      <div className="container mx-auto px-3">
         <div className="text-center container mx-auto">
           <h1 className="pt-5 text-4xl font-semibold dark:text-white">
             {title} Movies
