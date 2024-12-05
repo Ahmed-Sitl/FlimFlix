@@ -12,7 +12,7 @@ import people from "@/data/lists/people.json";
 
 const Navbar = async () => {
   return (
-    <nav className="bg-primary dark:bg-primary-dark dark:text-white">
+    <nav className="bg-primary dark:bg-primary-dark dark:text-white fixed top-0 left-0 z-50 w-full">
       <div className="container mx-auto p-1 flex justify-between items-center">
         <div className="flex gap-14">
           <MenuNavbar />

@@ -57,7 +57,7 @@ const page = async ({ params }: { params: Promise<Props> }) => {
 
   return (
     <div className="dark:bg-primary-dark py-5 dark:text-white">
-      <div className="container mx-auto flex flex-col lg:flex-row">
+      <div className="container mx-auto flex flex-col lg:flex-row mt-16">
         <div className="flex flex-col px-3">
           <div>
             <Image
