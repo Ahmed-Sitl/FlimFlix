@@ -50,7 +50,6 @@ const page = async ({ params }: { params: Promise<Props> }) => {
   const data = await fetchData(
     `/person/${id}?append_to_response=movie_credits,external_ids`
   );
-  console.log(data);
 
   const birthday = data.birthday ? formatDate(data.birthday) : "Unknown";
   const age = data.birthday ? calculateAge(data.birthday) : "Unknown";

@@ -1,12 +1,22 @@
 "use client";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
 import Pagination from "@/components/Pagination";
-import { useState, useEffect } from "react";
-
+import LoadingSpinner from "@/components/LoadingSpinner";
 import { fetchData } from "@/util/FetchData";
+
 import { fetchImage } from "@/util/FetchImages";
+import { female } from "@/util/image";
+import { male } from "@/util/image";
+import { unknown } from "@/util/image";
+
+interface Props {
+  profilePath: string;
+  gender: number;
+  name: string;
+}
 
 const Page = () => {
   const [data, setData] = useState<any>([]);
@@ -28,9 +38,38 @@ const Page = () => {
     fetchDataAsync();
   }, [page]);
 
+  const ImagePerson = ({ profilePath, gender, name }: Props) => {
+    const defaultImage = (gender: number) => {
+      if (gender === 2) {
+        return male.src;
+      } else if (gender === 1) {
+        return female.src;
+      } else {
+        return unknown.src;
+      }
+    };
+
+    const [imageUrl, setImageUrl] = useState(defaultImage(gender));
+
+    return (
+      <Image
+        width={400}
+        height={400}
+        priority
+        className="w-full h-80 object-cover rounded-t-2xl"
+        src={imageUrl}
+        alt={name}
+        onLoad={() => setImageUrl(fetchImage(profilePath))}
+        onError={(e) => {
+          setImageUrl(defaultImage(gender));
+        }}
+      />
+    );
+  };
+
   return (
     <>
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <LoadingSpinner />}
       {!isLoading && (
         <div className="dark:bg-primary-dark">
           <h1 className="pt-5 text-4xl text-center font-semibold mt-16 dark:text-white">
@@ -45,14 +84,12 @@ const Page = () => {
                   className="bg-slate-200 rounded-2xl hover:scale-105 duration-200"
                 >
                   <div className="text-center">
-                    <Image
-                      width={400}
-                      height={400}
-                      priority
-                      className="w-full h-80 object-cover rounded-t-2xl"
-                      src={fetchImage(person.profile_path)}
-                      alt={person.name}
+                    <ImagePerson
+                      profilePath={person.profile_path}
+                      gender={person.gender}
+                      name={person.name}
                     />
+
                     <h3 className="text-xl font-semibold pb-3">
                       {person.name}
                     </h3>
