@@ -60,7 +60,7 @@ const Page = () => {
         src={imageUrl}
         alt={name}
         onLoad={() => setImageUrl(fetchImage(profilePath))}
-        onError={(e) => {
+        onError={() => {
           setImageUrl(defaultImage(gender));
         }}
       />
