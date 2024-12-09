@@ -3,6 +3,7 @@ import Cards from "@/components/Cards";
 import { fetchData } from "@/util/FetchData";
 import Pagination from "@/components/Pagination";
 import { useState, useEffect } from "react";
+import Spinner from "./Spinner";
 
 interface Props {
   id: string;
@@ -39,7 +40,7 @@ const ListPage = ({ id, route }: Props) => {
 
   return (
     <>
-      {isLoading && <div>not found</div>}
+      {isLoading && <Spinner />}
       {!isLoading && (
         <div className="bg-gray-100 dark:bg-primary-dark">
           <div className="container mx-auto px-3 mt-16">

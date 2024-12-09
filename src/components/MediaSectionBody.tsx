@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { fetchData } from "@/util/FetchData";
 import Cards from "./Cards";
+import Spinner from "./Spinner";
 
 interface Movie {
   id: number;
@@ -39,7 +40,7 @@ const MediaSectionBody = ({ category }: Props) => {
   }, [category]);
 
   if (loading) {
-    return <p>Loading...</p>; // Render a loading message or spinner while fetching data
+    return <Spinner />; // Render a loading message or spinner while fetching data
   }
 
   if (!testData || !testData.results) {

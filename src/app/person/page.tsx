@@ -4,7 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 
 import Pagination from "@/components/Pagination";
-import LoadingSpinner from "@/components/LoadingSpinner";
+
+import Spinner from "@/components/Spinner";
 import { fetchData } from "@/util/FetchData";
 
 import { fetchImage } from "@/util/FetchImages";
@@ -69,7 +70,7 @@ const Page = () => {
 
   return (
     <>
-      {isLoading && <LoadingSpinner />}
+      {isLoading && <Spinner />}
       {!isLoading && (
         <div className="dark:bg-primary-dark">
           <h1 className="pt-5 text-4xl text-center font-semibold mt-16 dark:text-white">

@@ -7,6 +7,7 @@ import { placeholder } from "@/util/image";
 import { noImage } from "@/util/image";
 import CircularProgress from "./CircularProgress";
 import Cards from "./Cards";
+import Spinner from "./Spinner";
 
 interface Props {
   id: string;
@@ -127,7 +128,11 @@ const SingalMovie = ({ id, route }: Props) => {
 
   return (
     <>
-      {isLoading && <div className="mt-16">Logging ...</div>}
+      {isLoading && (
+        <div>
+          <Spinner />
+        </div>
+      )}
       {!isLoading && (
         <div className="mt-16">
           <div className="relative h-[60vh]">
