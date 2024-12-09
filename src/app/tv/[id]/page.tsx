@@ -13,7 +13,7 @@ const page = async function Page({ params }: { params: Promise<Props> }) {
       {list.includes(id) ? (
         <ListPage id={id} route="tv" />
       ) : (
-        <SingalMovie id="" route="" />
+        <SingalMovie id={id} route="tv" />
       )}
     </>
   );

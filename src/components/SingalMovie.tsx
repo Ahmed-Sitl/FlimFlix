@@ -46,7 +46,6 @@ const SingalMovie = ({ id, route }: Props) => {
         );
 
         console.log(data);
-        console.log(credits);
 
         // Find the trailer video (usually type 'Trailer' and site 'YouTube')
         const trailerVideo = videos.results.find(
@@ -116,8 +115,8 @@ const SingalMovie = ({ id, route }: Props) => {
         className="rounded-3xl cursor-pointer hover:scale-105 transition-all duration-300"
         alt={name}
         quality={100}
-        width={900} // Increased width
-        height={900} // Increased height
+        width={500} // Increased width
+        height={500} // Increased height
         onLoad={() => setImageUrl(fetchImage(profilePath))}
         onError={() => {
           setImageUrl(placeholder);
@@ -163,9 +162,11 @@ const SingalMovie = ({ id, route }: Props) => {
               <div>
                 <h1 className="text-2xl md:text-5xl font-bold mb-4">
                   {data.title}{" "}
-                  <span className="font-sans font-normal">
-                    ({data.release_date.slice(0, 4)})
-                  </span>
+                  {data.release_date && (
+                    <span className="font-sans font-normal">
+                      ({data.release_date?.slice(0, 4)})
+                    </span>
+                  )}
                 </h1>
                 <p className="text-lg md:text-2xl -mt-8 mx-5 mb-5">
                   {data.release_date} ({data.origin_country}){" "}
@@ -188,12 +189,14 @@ const SingalMovie = ({ id, route }: Props) => {
                   <p className="text-lg md:text-4xl mb-3">Overview</p>
                   <p className="text-lg md:text-2xl mb-6">{data.overview}</p>
                 </div>
-                <div>
-                  <h5 className="text-lg md:text-4xl mb-3">Budget</h5>
-                  <p className="text-lg md:text-2xl mb-6 font-bold">
-                    {formatBudget(data.budget)} $
-                  </p>
-                </div>
+                {data.buget && (
+                  <div>
+                    <h5 className="text-lg md:text-4xl mb-3">Budget</h5>
+                    <p className="text-lg md:text-2xl mb-6 font-bold">
+                      {formatBudget(data.budget)} $
+                    </p>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -224,14 +227,16 @@ const SingalMovie = ({ id, route }: Props) => {
                   </div>
                 )}
               </div>
-              <div className="w-full overflow-hidden">
-                <h5 className="text-3xl md:text-5xl pb-3">Cast</h5>
-                <div className="flex gap-5 overflow-x-auto p-5 max-w-full">
-                  {cast.map((actor: any) => (
-                    <Cards key={actor.id} movie={actor} route="person" />
-                  ))}
+              {cast.length > 0 && (
+                <div className="w-full overflow-hidden">
+                  <h5 className="text-3xl md:text-5xl pb-3">Cast</h5>
+                  <div className="flex gap-5 overflow-x-auto p-5 max-w-full">
+                    {cast.map((actor: any) => (
+                      <Cards key={actor.id} movie={actor} route="person" />
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
 
