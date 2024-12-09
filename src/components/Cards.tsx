@@ -10,6 +10,7 @@ interface MovieData {
   vote_average: number;
   // overview: string;
   name: string;
+  profile_path?: string;
 }
 interface Props {
   movie: MovieData;
@@ -27,12 +28,14 @@ const Cards = ({ movie, route }: Props) => {
           height={750}
           priority
           className="rounded-2xl w-56 h-80 object-cover"
-          src={fetchImage(movie.poster_path)}
+          src={fetchImage(movie.poster_path || movie.profile_path || "")}
           alt={movie.title || movie.name || "Movie Poster"}
         />
-        <div className="absolute bottom-10 left-3">
-          <CircularProgress value={Math.floor(movie.vote_average * 10)} />
-        </div>
+        {movie.vote_average && (
+          <div className="absolute bottom-10 left-3">
+            <CircularProgress value={Math.floor(movie.vote_average * 10)} />
+          </div>
+        )}
         <div className="mt-2 font-bold text-center text-sm text-wrap leading-tight">
           {movie.title || movie.name}
         </div>

@@ -39,7 +39,7 @@ const CircularProgress = ({ value }: Props) => {
           cy={radius + strokeWidth / 2}
         />
       </svg>
-      <div className="absolute text-xs text-white">{normalizedValue}%</div>
+      <div className="absolute text-sm text-white">{normalizedValue}%</div>
     </div>
   );
 };
