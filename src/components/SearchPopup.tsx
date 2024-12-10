@@ -1,12 +1,43 @@
 "use client";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useState, useRef, useEffect } from "react";
 import { IoMdSearch } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
 
 const SearchPopup = () => {
+  const router = useRouter(); // Initialize the router
+
   const [isOpen, setIsOpen] = useState(false);
 
+  // Ref for the input field
+  const inputRef = useRef<HTMLInputElement>(null);
+
   const closePopup = () => {
+    setIsOpen(false);
+  };
+
+  // Automatically focus input when popup opens
+  useEffect(() => {
+    if (isOpen && inputRef.current) {
+      inputRef.current.focus(); // Focus the input field
+    }
+  }, [isOpen]);
+
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // Prevent default form submission
+
+    // Type assertion to access the form element
+    const form = e.currentTarget;
+
+    // Get the search query from the input field
+    const searchQuery = (
+      form.elements.namedItem("search") as HTMLInputElement
+    ).value.trim();
+
+    if (searchQuery) {
+      // Navigate to the search page with the query
+      router.push(`/search?q=${encodeURIComponent(searchQuery)}`);
+    }
     setIsOpen(false);
   };
 
@@ -28,17 +59,19 @@ const SearchPopup = () => {
             >
               <IoClose fontSize={30} className="cursor-pointer" />
             </button>
-            <form>
+            <form onSubmit={handleSearch}>
               <h2 className="text-2xl font-semibold text-white mb-4 text-center">
                 Search
               </h2>
               <input
                 type="search"
+                name="search"
                 placeholder="Type to search..."
+                ref={inputRef} // Attach the ref to the input
                 className="w-full p-3 text-gray-700 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
               />
               <button
-                onClick={closePopup}
+                type="submit"
                 className="mt-4 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
               >
                 Search

@@ -1,7 +1,28 @@
+"use client";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { headerImage } from "@/util/image";
 
 const HeroSection = () => {
+  const router = useRouter(); // Initialize the router
+
+  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // Prevent default form submission
+
+    // Type assertion to access the form element
+    const form = e.currentTarget;
+
+    // Get the search query from the input field
+    const searchQuery = (
+      form.elements.namedItem("search") as HTMLInputElement
+    ).value.trim();
+
+    if (searchQuery) {
+      // Navigate to the search page with the query
+      router.push(`/search?q=${encodeURIComponent(searchQuery)}`);
+    }
+  };
+
   return (
     <header className="relative h-[60vh]">
       {/* Background Image */}
@@ -29,15 +50,16 @@ const HeroSection = () => {
         </p>
 
         {/* Search Input */}
-        <form className="w-full max-w-md">
+        <form className="w-full max-w-md" onSubmit={handleSearch}>
           <div className="relative">
             <input
               type="search"
+              name="search" // Add a name attribute to access the input value
               placeholder="Search for movies or shows..."
               className="w-full px-4 py-3 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
             />
             <button
-              type="button"
+              type="submit" // Change to submit to trigger form submission
               className="absolute top-0 right-0 px-4 py-3 bg-primary text-black font-bold rounded-r-lg hover:bg-primary-dark hover:text-white"
             >
               Search
