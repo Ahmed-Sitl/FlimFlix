@@ -45,8 +45,6 @@ const SingalMovie = ({ id, route }: Props) => {
           `/${route}/${id}/recommendations`
         );
 
-        console.log(data);
-
         // Find the trailer video (usually type 'Trailer' and site 'YouTube')
         const trailerVideo = videos.results.find(
           (video: { type: string; site: string }) =>
@@ -218,7 +216,7 @@ const SingalMovie = ({ id, route }: Props) => {
                   <div className="w-[600px] h-[360px]">
                     <Image
                       objectFit="cover"
-                      className="w-full h-full"
+                      className="w-full h-full rounded-3xl"
                       src={noImage}
                       alt="No Trailer"
                       width={600}
@@ -247,7 +245,7 @@ const SingalMovie = ({ id, route }: Props) => {
               <div className="flex gap-5 overflow-x-auto p-5 max-w-full">
                 {recommendations.length > 0 ? (
                   recommendations.map((movie: any) => (
-                    <Cards key={movie.id} movie={movie} route="movie" />
+                    <Cards key={movie.id} movie={movie} route={route} />
                   ))
                 ) : (
                   <p>No recommendations available.</p>
