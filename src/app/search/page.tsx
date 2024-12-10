@@ -1,14 +1,13 @@
 "use client";
 
 import Spinner from "@/components/Spinner";
-import { useRouter } from "next/navigation";
-import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { fetchData } from "@/util/FetchData";
 import Cards from "@/components/Cards";
 import Pagination from "@/components/Pagination";
 
-const Page = () => {
+const SearchPage = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const query = searchParams.get("q");
@@ -23,11 +22,9 @@ const Page = () => {
 
     const fetchDataAsync = async () => {
       try {
-        // const data = await fetchData(`/search/keyword?query=${query}&page=1`);
         const data = await fetchData(
           `/search/multi?query=${query}&page=${page}`
         );
-        console.log(data);
         setData(data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -63,6 +60,14 @@ const Page = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+const Page = () => {
+  return (
+    <Suspense fallback={<Spinner />}>
+      <SearchPage />
+    </Suspense>
   );
 };
 
