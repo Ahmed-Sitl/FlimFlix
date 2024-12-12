@@ -3,7 +3,8 @@ import Cards from "@/components/Cards";
 import { fetchData } from "@/util/FetchData";
 import Pagination from "@/components/Pagination";
 import { useState, useEffect } from "react";
-import Spinner from "./Spinner";
+import Spinner from "@/components/Spinner";
+import Filter from "@/components/Filter";
 
 interface Props {
   id: string;
@@ -14,11 +15,17 @@ const ListPage = ({ id, route }: Props) => {
   const [data, setData] = useState<any>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
+  const [filters, setFilters] = useState({});
 
   useEffect(() => {
     const fetchDataAsync = async () => {
       try {
-        const data = await fetchData(`/${route}/${id}?page=${page}`);
+        const data = await fetchData(`/${route}/${id}?page=${page}`, "en", {
+          ...filters,
+        });
+        // const data = await fetchData(`/discover/${route}`, "en", {
+        //   ...filters,
+        // });
 
         setData(data);
         setIsLoading(false);
@@ -28,7 +35,7 @@ const ListPage = ({ id, route }: Props) => {
     };
 
     fetchDataAsync();
-  }, [page]);
+  }, [page, filters]);
 
   const format = (str: string) => {
     return str
@@ -51,8 +58,8 @@ const ListPage = ({ id, route }: Props) => {
             </div>
 
             <div className="flex flex-col gap-5 sm:flex-row py-10 text-center">
-              <div className="rounded-lg container mx-auto bg-primary flex-1 min-w-64">
-                <p>Filter will be coming soon</p>
+              <div className="rounded-lg container mx-auto flex-1 min-w-64">
+                <Filter setFilters={setFilters} />
               </div>
 
               <div className="flex flex-wrap justify-center gap-6 container mx-auto p-5 max-w-7xl">

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "name": "All Genres",
+    "value": ""
+  },
+  {
+    "id": "2",
+    "name": "Animation",
+    "value": "16"
+  },
+  {
+    "id": "3",
+    "name": "Action",
+    "value": "28"
+  },
+  {
+    "id": "4",
+    "name": "Comedy",
+    "value": "35"
+  },
+  {
+    "id": "5",
+    "name": "Romance",
+    "value": "10749"
+  },
+  {
+    "id": "6",
+    "name": "Horror",
+    "value": "27"
+  }
+]
