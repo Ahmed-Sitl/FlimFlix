@@ -4,10 +4,10 @@ import langs from "@/data/filters/lang.json";
 
 interface Props {
   setFilters: any;
+  lang?: string;
 }
 
-const Filter = ({ setFilters }: Props) => {
-  let lang = "en";
+const Filter = ({ setFilters, lang = "en" }: Props) => {
   const currentYear = new Date().getFullYear();
   const years = Array.from({ length: 7 }, (_, index) => currentYear - index);
 
